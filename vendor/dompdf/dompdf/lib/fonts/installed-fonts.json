@@ -1,0 +1,18 @@
+{
+    "dm sans": {
+        "300_italic": "F:\\xampp82\\htdocs\\crm\\vendor\\dompdf\\dompdf\/lib\/fonts\/dm_sans_300_italic_5dd75dbf04d475c59eb157b6396d4905",
+        "300": "F:\\xampp82\\htdocs\\crm\\vendor\\dompdf\\dompdf\/lib\/fonts\/dm_sans_300_f8543d32d9115391444a15802cc85f00",
+        "normal": "F:\\xampp82\\htdocs\\crm\\vendor\\dompdf\\dompdf\/lib\/fonts\/dm_sans_normal_42fcd0ea12ff589f4ccf7cd1eb4b0bb8",
+        "500": "F:\\xampp82\\htdocs\\crm\\vendor\\dompdf\\dompdf\/lib\/fonts\/dm_sans_500_e3bc8d7bbed7eb5328692f20824bd3d5",
+        "600": "dm_sans_600_95b1ff7d73eecd4f24f1e5335a68fdd5"
+    },
+    "syne": {
+        "normal": "F:\\xampp82\\htdocs\\crm\\vendor\\dompdf\\dompdf\/lib\/fonts\/syne_normal_6a83b21a416554e20e6349e61e940d9c",
+        "600": "F:\\xampp82\\htdocs\\crm\\vendor\\dompdf\\dompdf\/lib\/fonts\/syne_600_1e6e965d2a5a0973cc71d9d674be7e12",
+        "bold": "F:\\xampp82\\htdocs\\crm\\vendor\\dompdf\\dompdf\/lib\/fonts\/syne_bold_47598befaddad3e6fc09c07554ff8b62",
+        "800": "syne_800_0c7dc97525ea6c052272de97939f3b38"
+    },
+    "dancingscript": {
+        "normal": "dancingscript_normal_5c1d193eaed7a91fdcbe92b749780afc"
+    }
+}

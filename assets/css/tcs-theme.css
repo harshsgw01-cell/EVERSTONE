@@ -1,0 +1,552 @@
+/* ════════════════════════════════════════════════════════
+   EVERSTONE SHARED THEME
+   Shared by: login.php, navbar.php (all pages)
+   Contains : CSS variables, base reset, shared animations
+════════════════════════════════════════════════════════ */
+
+/* ── Light Mode Variables ── */
+:root {
+    /* Core */
+    --color-bg: #f0f4ff;
+    --color-surface: #ffffff;
+    --color-surface-2: #f8fafc;
+    --color-surface-glass: rgba(255, 255, 255, 0.92);
+    --color-border: #e2e8f0;
+    --color-border-subtle: rgba(0, 0, 0, 0.07);
+
+    /* Text */
+    --color-text-primary: #1e293b;
+    --color-text-secondary: #64748b;
+    --color-text-muted: #94a3b8;
+    --color-text-inverted: #ffffff;
+
+    /* Accent / Brand */
+    --color-accent: #6366f1;
+    --color-accent-dark: #4f46e5;
+    --color-accent-darker: #4338ca;
+    --color-accent-bg: rgba(99, 102, 241, 0.1);
+    --color-accent-border: rgba(99, 102, 241, 0.2);
+    --color-accent-ring: rgba(99, 102, 241, 0.2);
+
+    /* Inputs */
+    --color-input-bg: #f8fafc;
+    --color-input-border: #e2e8f0;
+    --color-input-text: #1e293b;
+    --color-input-placeholder: #94a3b8;
+    --color-input-focus-ring: rgba(99, 102, 241, 0.2);
+    --color-autofill-bg: #f0f4ff;
+
+    /* Feedback — Danger */
+    --color-danger-bg: rgba(239, 68, 68, 0.08);
+    --color-danger-text: #dc2626;
+    --color-danger-border: rgba(239, 68, 68, 0.2);
+
+    /* Feedback — Info */
+    --color-info-bg: rgba(99, 102, 241, 0.08);
+    --color-info-text: #4f46e5;
+    --color-info-border: rgba(99, 102, 241, 0.2);
+
+    /* Modal */
+    --color-modal-bg: #ffffff;
+    --color-modal-header: #f8fafc;
+    --color-modal-border: #e8ecf6;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.12);
+    --shadow-card: 0 32px 80px rgba(79, 70, 229, 0.12), 0 8px 24px rgba(0, 0, 0, 0.06);
+    --shadow-dropdown: 0 16px 48px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+
+    /* Theme Toggle Button */
+    --color-toggle-icon: #64748b;
+    --color-toggle-bg: #f1f5f9;
+    --color-toggle-border: #e2e8f0;
+    --color-toggle-hover: #6366f1;
+
+    /* ── Navbar-specific ── */
+    --nb-bg: #ffffff;
+    --nb-bg-glass: rgba(255, 255, 255, 0.92);
+    --nb-border: rgba(0, 0, 0, 0.07);
+    --nb-shadow: 0 2px 20px rgba(0, 0, 0, 0.06), 0 1px 0 rgba(0, 0, 0, 0.04);
+    --nb-link: #475569;
+    --nb-link-hover-bg: #f1f5f9;
+    --nb-link-hover: #1e293b;
+    --nb-active-bg: rgba(99, 102, 241, 0.1);
+    --nb-active-color: #4f46e5;
+    --nb-active-border: #6366f1;
+    --nb-brand-title: #1e293b;
+    --nb-logo-bg: rgba(99, 102, 241, 0.1);
+    --nb-logo-border: rgba(99, 102, 241, 0.2);
+    --nb-pill-bg: #f8fafc;
+    --nb-pill-border: #e2e8f0;
+    --nb-pill-hover: #f1f5f9;
+    --nb-user-name: #1e293b;
+    --nb-chevron: #94a3b8;
+    --nb-divider-v: #e2e8f0;
+    --nb-toggler-border: rgba(0, 0, 0, 0.15);
+    --nb-toggler-bg: rgba(0, 0, 0, 0.04);
+    --nb-dropdown-bg: #ffffff;
+    --nb-dropdown-border: rgba(0, 0, 0, 0.07);
+    --nb-dropdown-shadow: 0 16px 48px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+    --nb-dd-item: #374151;
+    --nb-dd-item-hover: #111827;
+    --nb-dd-item-hov-bg: #f8fafc;
+    --nb-dd-section: #9ca3af;
+    --nb-dd-divider: #f1f5f9;
+    --nb-dd-danger: #dc2626;
+    --nb-dd-danger-hov: #b91c1c;
+    --nb-dd-danger-bg: #fef2f2;
+    --nb-user-hdr-sub: #6b7280;
+    --nb-mobile-bg: rgba(255, 255, 255, 0.98);
+    --nb-mobile-border: rgba(0, 0, 0, 0.07);
+    --nb-mobile-drop-bg: #f8fafc;
+}
+
+/* ── Dark Mode Variables ── */
+[data-theme="dark"] {
+    /* Core */
+    --color-bg: #0a0f1e;
+    --color-surface: rgba(255, 255, 255, 0.04);
+    --color-surface-2: #0f172a;
+    --color-surface-glass: rgba(13, 17, 23, 0.92);
+    --color-border: rgba(255, 255, 255, 0.09);
+    --color-border-subtle: rgba(255, 255, 255, 0.07);
+
+    /* Text */
+    --color-text-primary: #f1f5f9;
+    --color-text-secondary: rgba(255, 255, 255, 0.55);
+    --color-text-muted: rgba(255, 255, 255, 0.28);
+    --color-text-inverted: #0a0f1e;
+
+    /* Accent / Brand */
+    --color-accent: #818cf8;
+    --color-accent-dark: #6366f1;
+    --color-accent-darker: #4f46e5;
+    --color-accent-bg: rgba(99, 102, 241, 0.15);
+    --color-accent-border: rgba(99, 102, 241, 0.25);
+    --color-accent-ring: rgba(99, 102, 241, 0.25);
+
+    /* Inputs */
+    --color-input-bg: rgba(255, 255, 255, 0.06);
+    --color-input-border: rgba(255, 255, 255, 0.1);
+    --color-input-text: #e2e8f0;
+    --color-input-placeholder: rgba(255, 255, 255, 0.28);
+    --color-input-focus-ring: rgba(99, 102, 241, 0.25);
+    --color-autofill-bg: #1a1f35;
+
+    /* Feedback — Danger */
+    --color-danger-bg: rgba(248, 113, 113, 0.12);
+    --color-danger-text: #fca5a5;
+    --color-danger-border: rgba(248, 113, 113, 0.2);
+
+    /* Feedback — Info */
+    --color-info-bg: rgba(99, 102, 241, 0.12);
+    --color-info-text: #a5b4fc;
+    --color-info-border: rgba(99, 102, 241, 0.2);
+
+    /* Modal */
+    --color-modal-bg: #111827;
+    --color-modal-header: #0f172a;
+    --color-modal-border: rgba(255, 255, 255, 0.09);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.5);
+    --shadow-card: 0 32px 80px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+    --shadow-dropdown: 0 20px 60px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.3);
+
+    /* Theme Toggle Button */
+    --color-toggle-icon: rgba(255, 255, 255, 0.6);
+    --color-toggle-bg: rgba(255, 255, 255, 0.07);
+    --color-toggle-border: rgba(255, 255, 255, 0.12);
+    --color-toggle-hover: #818cf8;
+
+    /* ── Navbar-specific ── */
+    --nb-bg: #0d1117;
+    --nb-bg-glass: rgba(13, 17, 23, 0.92);
+    --nb-border: rgba(255, 255, 255, 0.07);
+    --nb-shadow: 0 2px 24px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.04);
+    --nb-link: rgba(255, 255, 255, 0.65);
+    --nb-link-hover-bg: rgba(255, 255, 255, 0.07);
+    --nb-link-hover: #ffffff;
+    --nb-active-bg: rgba(99, 102, 241, 0.15);
+    --nb-active-color: #818cf8;
+    --nb-active-border: #6366f1;
+    --nb-brand-title: #f1f5f9;
+    --nb-logo-bg: rgba(255, 255, 255, 0.1);
+    --nb-logo-border: rgba(255, 255, 255, 0.15);
+    --nb-pill-bg: rgba(255, 255, 255, 0.06);
+    --nb-pill-border: rgba(255, 255, 255, 0.1);
+    --nb-pill-hover: rgba(255, 255, 255, 0.1);
+    --nb-user-name: rgba(255, 255, 255, 0.9);
+    --nb-chevron: rgba(255, 255, 255, 0.35);
+    --nb-divider-v: rgba(255, 255, 255, 0.12);
+    --nb-toggler-border: rgba(255, 255, 255, 0.18);
+    --nb-toggler-bg: rgba(255, 255, 255, 0.05);
+    --nb-dropdown-bg: #161b27;
+    --nb-dropdown-border: rgba(255, 255, 255, 0.08);
+    --nb-dropdown-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.3);
+    --nb-dd-item: rgba(255, 255, 255, 0.75);
+    --nb-dd-item-hover: #ffffff;
+    --nb-dd-item-hov-bg: rgba(255, 255, 255, 0.07);
+    --nb-dd-section: rgba(255, 255, 255, 0.25);
+    --nb-dd-divider: rgba(255, 255, 255, 0.07);
+    --nb-dd-danger: #fca5a5;
+    --nb-dd-danger-hov: #fca5a5;
+    --nb-dd-danger-bg: rgba(239, 68, 68, 0.12);
+    --nb-user-hdr-sub: rgba(255, 255, 255, 0.35);
+    --nb-mobile-bg: #0d1117;
+    --nb-mobile-border: rgba(255, 255, 255, 0.07);
+    --nb-mobile-drop-bg: rgba(255, 255, 255, 0.03);
+}
+
+/* ════════════════════════════════════════════════════════
+   BASE RESET
+════════════════════════════════════════════════════════ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+    transition: background var(--transition-base, .35s ease),
+        color var(--transition-base, .35s ease);
+}
+
+/* ════════════════════════════════════════════════════════
+   SHARED COMPONENT — THEME TOGGLE BUTTON
+   Used standalone (login) and inside navbar
+════════════════════════════════════════════════════════ */
+.tcs-theme-toggle {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--color-toggle-bg);
+    border: 1.5px solid var(--color-toggle-border);
+    color: var(--color-toggle-icon);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.88rem;
+    transition: all .22s ease;
+    outline: none;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.tcs-theme-toggle:hover {
+    border-color: var(--color-toggle-hover);
+    color: var(--color-toggle-hover);
+    transform: rotate(15deg) scale(1.08);
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.2);
+}
+
+/* Keep native select popups dark and readable in dark mode. */
+[data-theme="dark"] select option,
+[data-theme="dark"] select optgroup {
+    background-color: #111827 !important;
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] select option:checked,
+[data-theme="dark"] select option:hover {
+    background-color: #1e293b !important;
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] select option:disabled {
+    color: #94a3b8 !important;
+}
+
+/* Compact variant used inside the navbar */
+.tcs-theme-toggle.compact {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    font-size: 0.82rem;
+}
+
+/* ════════════════════════════════════════════════════════
+   SHARED COMPONENT — FORM INPUT
+════════════════════════════════════════════════════════ */
+.tcs-input {
+    width: 100%;
+    height: 46px;
+    padding: 0 44px 0 38px;
+    background: var(--color-input-bg) !important;
+    border: 1.5px solid var(--color-input-border) !important;
+    border-radius: 12px !important;
+    color: var(--color-input-text) !important;
+    font-size: 0.86rem !important;
+    transition: border-color .15s, box-shadow .15s, background .3s;
+    outline: none;
+    -webkit-text-fill-color: var(--color-input-text) !important;
+}
+
+.tcs-input.no-toggle {
+    padding-right: 14px;
+}
+
+.tcs-input::placeholder {
+    color: var(--color-input-placeholder) !important;
+}
+
+.tcs-input:focus {
+    background: var(--color-input-bg) !important;
+    border-color: var(--color-accent-dark) !important;
+    box-shadow: 0 0 0 3px var(--color-input-focus-ring) !important;
+}
+
+.tcs-input.is-invalid {
+    border-color: #f87171 !important;
+    box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.15) !important;
+}
+
+.tcs-input:-webkit-autofill,
+.tcs-input:-webkit-autofill:hover,
+.tcs-input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 999px var(--color-autofill-bg) inset !important;
+    -webkit-text-fill-color: var(--color-input-text) !important;
+    caret-color: var(--color-input-text);
+}
+
+/* ════════════════════════════════════════════════════════
+   SHARED COMPONENT — ALERT BANNER
+════════════════════════════════════════════════════════ */
+.tcs-alert {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 14px;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    animation: tcsShake .4s ease;
+}
+
+.tcs-alert i {
+    flex-shrink: 0;
+}
+
+.tcs-alert.danger {
+    background: var(--color-danger-bg);
+    color: var(--color-danger-text);
+    border: 1px solid var(--color-danger-border);
+}
+
+.tcs-alert.info {
+    background: var(--color-info-bg);
+    color: var(--color-info-text);
+    border: 1px solid var(--color-info-border);
+}
+
+/* ════════════════════════════════════════════════════════
+   SHARED COMPONENT — INPUT WRAP (icon left + right toggle)
+════════════════════════════════════════════════════════ */
+.tcs-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.tcs-input-icon-left {
+    position: absolute;
+    left: 13px;
+    color: var(--color-text-muted);
+    font-size: 0.88rem;
+    pointer-events: none;
+    z-index: 5;
+    transition: color .15s;
+}
+
+.tcs-input-wrap:focus-within .tcs-input-icon-left {
+    color: var(--color-accent-dark);
+}
+
+.tcs-pw-toggle {
+    position: absolute;
+    right: 12px;
+    color: var(--color-text-muted);
+    font-size: 0.88rem;
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    z-index: 5;
+    transition: color .15s;
+    line-height: 1;
+}
+
+.tcs-pw-toggle:hover {
+    color: var(--color-text-secondary);
+}
+
+/* ════════════════════════════════════════════════════════
+   SHARED THEME SCRIPT HELPER
+   JS reads/writes this class on <html>
+════════════════════════════════════════════════════════ */
+html {
+    transition: background .35s ease;
+}
+
+/* ════════════════════════════════════════════════════════
+   SHARED ANIMATIONS
+════════════════════════════════════════════════════════ */
+@keyframes tcsFadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes tcsFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes tcsShake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20%,
+    60% {
+        transform: translateX(-5px);
+    }
+
+    40%,
+    80% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes tcsFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-22px) scale(1.04);
+    }
+}
+
+@keyframes tcsDropIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@font-face {
+    font-family: 'DancingScript';
+    src: url('../assets/fonts/static/DancingScript-SemiBold.ttf') format('truetype');
+}
+
+.pdf-head-name {
+    font-family: 'DancingScript', sans-serif;
+    font-size: 6em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #0d3483;
+}
+
+.span-blue {
+    color: #1a6493;
+}
+
+.span-red {
+    color: #c6265c;
+}
+
+.pdf-header-w {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    letter-spacing: -3px;
+}
+
+.pdf-head-title {
+    font-size: 5em;
+}
+
+
+.rfq-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.rfq-header {
+    border-bottom: 3px solid #397099;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.rfq-table {
+    width: 100%;
+    min-width: 800px;
+    border-collapse: collapse;
+}
+
+.rfq-table th,
+.rfq-table td {
+    padding: 8px;
+    vertical-align: top;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.desc-field input {
+    flex: 1;
+    min-width: 0;
+}
+
+.desc-field strong {
+    display: block;
+    color: #397099;
+}
+
+.rfq-grand-total {
+    width: 100%;
+    text-align: right;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 6px 100px;
+    background: #fff;
+    border: 1px solid #ddd;
+}

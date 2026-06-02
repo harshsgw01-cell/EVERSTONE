@@ -1,0 +1,24 @@
+# Disable LiteSpeed cache for entire TCS
+<IfModule LiteSpeed>
+    RewriteEngine on
+    CacheDisable public /
+    RewriteRule .* - [E=Cache-Control:no-cache]
+</IfModule>
+
+# Disable all caching for PHP files
+<IfModule mod_headers.c>
+    <FilesMatch "\.(php)$">
+        Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+        Header set Expires "Thu, 01 Jan 1970 00:00:00 GMT"
+    </FilesMatch>
+</IfModule>
+
+# Allow direct access to PHP files (don't pass through WordPress)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /crm/public/
+    RewriteRule ^.*\.php$ - [L]
+</IfModule>
+
+Options -Indexes

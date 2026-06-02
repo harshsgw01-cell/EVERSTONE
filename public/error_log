@@ -1,0 +1,40 @@
+[11-Sep-2025 00:46:51 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'novaitya_cms_new'@'localhost' (using password: NO) in /home/novaitya/public_html/tcs_new/config/database.php:2
+Stack trace:
+#0 /home/novaitya/public_html/tcs_new/config/database.php(2): mysqli_connect()
+#1 /home/novaitya/public_html/tcs_new/includes/auth.php(2): include('/home/novaitya/...')
+#2 /home/novaitya/public_html/tcs_new/public/login.php(2): include('/home/novaitya/...')
+#3 {main}
+  thrown in /home/novaitya/public_html/tcs_new/config/database.php on line 2
+[11-Sep-2025 00:49:05 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'novaitya_cms_new'@'localhost' (using password: NO) in /home/novaitya/public_html/tcs_new/config/database.php:2
+Stack trace:
+#0 /home/novaitya/public_html/tcs_new/config/database.php(2): mysqli_connect()
+#1 /home/novaitya/public_html/tcs_new/includes/auth.php(2): include('/home/novaitya/...')
+#2 /home/novaitya/public_html/tcs_new/public/login.php(7): include('/home/novaitya/...')
+#3 {main}
+  thrown in /home/novaitya/public_html/tcs_new/config/database.php on line 2
+[11-Sep-2025 00:49:45 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'novaitya_cms_new'@'localhost' (using password: NO) in /home/novaitya/public_html/tcs_new/config/database.php:2
+Stack trace:
+#0 /home/novaitya/public_html/tcs_new/config/database.php(2): mysqli_connect()
+#1 /home/novaitya/public_html/tcs_new/includes/auth.php(2): include('/home/novaitya/...')
+#2 /home/novaitya/public_html/tcs_new/public/login.php(7): include('/home/novaitya/...')
+#3 {main}
+  thrown in /home/novaitya/public_html/tcs_new/config/database.php on line 2
+[11-Sep-2025 00:51:01 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'novaitya_cms_new'@'localhost' (using password: NO) in /home/novaitya/public_html/tcs_new/config/database.php:2
+Stack trace:
+#0 /home/novaitya/public_html/tcs_new/config/database.php(2): mysqli_connect()
+#1 /home/novaitya/public_html/tcs_new/includes/auth.php(2): include('/home/novaitya/...')
+#2 /home/novaitya/public_html/tcs_new/public/login.php(7): include('/home/novaitya/...')
+#3 {main}
+  thrown in /home/novaitya/public_html/tcs_new/config/database.php on line 2
+[11-Sep-2025 16:41:02 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/novaitya/public_html/crm/templates/navbar.php:1) in /home/novaitya/public_html/crm/includes/auth.php on line 32
+[11-Sep-2025 16:41:05 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/novaitya/public_html/crm/templates/navbar.php:1) in /home/novaitya/public_html/crm/includes/auth.php on line 32
+[11-Sep-2025 16:41:09 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/novaitya/public_html/crm/templates/navbar.php:1) in /home/novaitya/public_html/crm/includes/auth.php on line 32
+[11-Sep-2025 16:41:20 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/novaitya/public_html/crm/templates/navbar.php:1) in /home/novaitya/public_html/crm/includes/auth.php on line 32
+[11-Sep-2025 17:13:10 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/novaitya/public_html/crm/templates/navbar.php:1) in /home/novaitya/public_html/crm/includes/auth.php on line 32
+[11-Sep-2025 17:17:28 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/novaitya/public_html/crm/templates/navbar.php:1) in /home/novaitya/public_html/crm/includes/auth.php on line 32
+[11-Sep-2025 17:38:53 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/novaitya/public_html/crm/templates/navbar.php:1) in /home/novaitya/public_html/crm/includes/auth.php on line 32
+[11-Sep-2025 17:39:02 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/novaitya/public_html/crm/templates/navbar.php:1) in /home/novaitya/public_html/crm/includes/auth.php on line 32
+[11-Sep-2025 19:17:58 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/novaitya/public_html/crm/templates/navbar.php:1) in /home/novaitya/public_html/crm/includes/auth.php on line 32
+[11-Sep-2025 19:18:04 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/novaitya/public_html/crm/templates/navbar.php:1) in /home/novaitya/public_html/crm/includes/auth.php on line 32
+[16-Sep-2025 08:00:35 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/novaitya/public_html/crm/templates/navbar.php:1) in /home/novaitya/public_html/crm/includes/auth.php on line 32
+[16-Sep-2025 18:50:35 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/novaitya/public_html/crm/templates/navbar.php:1) in /home/novaitya/public_html/crm/includes/auth.php on line 32
