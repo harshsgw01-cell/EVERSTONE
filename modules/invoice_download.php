@@ -63,179 +63,312 @@ ob_start();
 <head>
 <style>
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica', Arial, sans-serif;
     font-size: 12px;
-    color: #000;
+    color: #2f2f2f;
+    background: #eef3f8;
+    margin: 0;
 }
 
-.header-img {
-    width: 100%;
+.invoice-shell {
+    max-width: 1050px;
+    margin: 16px auto;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 28px 34px;
+    box-shadow: 0 24px 60px rgba(18, 42, 66, 0.08);
 }
 
-.section {
-    margin: 20px;
-}
-
-.flex {
+.top-panel {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 26px;
+    border-bottom: 2px solid #d9e2ec;
+    padding-bottom: 18px;
 }
 
-.table {
+.branding {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.branding .logo-mark {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    background: #1b4f72;
+    color: #0d4c92;
+    font-size: 26px;
+    font-weight: 900;
+}
+
+.branding .brand-text h1 {
+    margin: 0;
+    font-size: 26px;
+    color: #142f46;
+}
+
+.branding .brand-text p {
+    margin: 6px 0 0;
+    color: #566d7a;
+    font-size: 11px;
+    line-height: 1.55;
+}
+
+.document-meta {
+    background: #f2f7fb;
+    border: 1px solid #d8e4ee;
+    border-radius: 14px;
+    padding: 18px 20px;
+    min-width: 240px;
+    text-align: right;
+}
+
+.document-meta .tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: #406d98;
+    text-transform: uppercase;
+}
+
+.document-meta h2 {
+    margin: 10px 0 8px;
+    font-size: 26px;
+    color: #1c3650;
+}
+
+.document-meta p {
+    margin: 6px 0 0;
+    color: #526879;
+    font-size: 11px;
+}
+
+.info-panel {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 16px;
+    margin: 26px 0 22px;
+}
+
+.info-card {
+    border: 1px solid #d8e4ee;
+    border-radius: 14px;
+    background: #f6f9fb;
+    padding: 18px;
+}
+
+.info-card h3 {
+    margin: 0 0 10px;
+    font-size: 12px;
+    color: #2f4b5e;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.info-card p {
+    margin: 5px 0;
+    color: #4f6777;
+    font-size: 11px;
+    line-height: 1.55;
+}
+
+.info-card strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #1f3545;
+}
+
+.line-items {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+    margin-bottom: 24px;
 }
 
-.table th, .table td {
-    border: 1px solid #ccc;
-    padding: 6px;
+.line-items th,
+.line-items td {
+    border: 1px solid #d9e3ee;
+    padding: 14px 12px;
 }
 
-.table th {
-    background: #f0f0f0;
-}
-
-.badge {
-    padding: 4px 8px;
-    background: #0dcaf0;
-    color: #000;
-    border-radius: 4px;
+.line-items th {
+    background: #1b4f72;
+    color: #ffffff;
     font-size: 11px;
+    letter-spacing: 0.08em;
+    text-align: left;
+}
+
+.line-items td {
+    background: #fafcfe;
+    color: #4c5e6f;
+    font-size: 11px;
+}
+
+.line-items tr:nth-child(even) td {
+    background: #f3f7fb;
+}
+
+.line-items .text-right {
+    text-align: right;
+}
+
+.summary-row {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.summary-box {
+    border: 1px solid #d8e4ee;
+    background: #f6f9fb;
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 12px;
+    color: #4c5e6f;
+}
+
+.summary-line.total {
+    font-size: 14px;
+    color: #1d3648;
+    font-weight: 800;
+    border-top: 1px solid #d9e3ee;
+    padding-top: 12px;
+    margin-top: 14px;
+}
+
+.footer-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.footer-box {
+    background: #f6f9fb;
+    border: 1px solid #d8e4ee;
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.footer-box h4 {
+    margin: 0 0 10px;
+    color: #2f4b5e;
+    font-size: 12px;
+}
+
+.footer-box p {
+    margin: 0;
+    color: #4f6777;
+    font-size: 11px;
+    line-height: 1.55;
 }
 </style>
 </head>
 
 <body>
 
-<img src="<?= pdf_asset_b64(__DIR__ . '/../assets/pdf-head-img.jpg', 'image/jpeg', 1200, 80) ?>" class="header-img">
-
-<div class="section flex">
-    <div>
-        <h2>EVERSTONE TECHNOLOGY SYSTEMS INC.</h2>
-        <p>
-            13455 94a Ave #104<br>
-            Surrey, BC V3V 1M9 Canada<br>
-            United States
-        </p>
-    </div>
-    <div>
-        <img src="<?= pdf_asset_b64(__DIR__ . '/../assets/Everstone.png', 'image/png', 420, 80) ?>" width="120">
-    </div>
-</div>
-
-<div class="section flex">
-    <div>
-        <p>
-            Pascaru, Ms. Anamaria<br>
-            Brussels, BE (NCIA HQ - Ship-To) New NATO HQ<br>
-            -Industrial Infrastructure Building - Reception<br>
-            Service Rue Arthur Maes 1, 1130 BRUSSELS,<br>
-            Belgium BRUSSELS 1130 Belgium
-        </p>
-    </div>
-</div>
-
-<div class="section">
-    <div class="flex">
-        <div>
-            <h3>Invoice <?= htmlspecialchars($invoice['code']) ?></h3>
+<div class="invoice-shell">
+    <div class="top-panel">
+        <div class="branding">
+            <div class="logo-mark">E</div>
+            <div class="brand-text">
+                <h1>Everstone Technology</h1>
+                <p>Technology procurement and enterprise service management.</p>
+            </div>
+        </div>
+        <div class="document-meta">
+            <span class="tag">Invoice</span>
+            <h2><?= htmlspecialchars($invoice['code']) ?></h2>
             <p>Order #: <?= htmlspecialchars($invoice['order_code']) ?></p>
-            <p>Date: <?= date("m/d/Y", strtotime($invoice['created_at'])) ?></p>
-            <span class="badge"><?= htmlspecialchars($invoice['status']) ?></span>
-        </div>
-        <div style="text-align:right">
-            <h4>Your Company</h4>
-            <p>
-                123 Business St<br>
-                City, Country<br>
-                Email: info@company.com
-            </p>
+            <p>Date: <?= date("M d, Y", strtotime($invoice['created_at'])) ?></p>
         </div>
     </div>
-</div>
 
-<div class="section">
-    <h4>Bill To:</h4>
-    <p>
-        Customer: <?= htmlspecialchars($invoice['customer']) ?><br>
-        Email: <?= htmlspecialchars($invoice['email']) ?> |
-        Phone: <?= htmlspecialchars($invoice['phone']) ?><br>
-        Address: <?= nl2br(htmlspecialchars($invoice['address'])) ?>
-    </p>
-</div>
-
-<div class="section">
-<table class="table">
-<thead>
-<tr>
-    <th>#</th>
-    <th>Product</th>
-    <th>Qty</th>
-    <th>Unit Price</th>
-    <th>Sub Total</th>
-</tr>
-</thead>
-<tbody>
-<?php
-$i = 1;
-while ($line = mysqli_fetch_assoc($order_lines)) {
-?>
-<tr>
-    <td><?= $i++ ?></td>
-    <td><?= htmlspecialchars($line['product']) ?></td>
-    <td><?= $line['qty'] ?></td>
-    <td>$<?= number_format($line['unit_price'], 2) ?></td>
-    <td>$<?= number_format($line['qty'] * $line['unit_price'], 2) ?></td>
-</tr>
-<?php } ?>
-<tr>
-    <th></th>
-    <th></th>
-    <th>Due Date</th>
-    <th>Paid Date</th>
-    <th>Total</th>
-</tr>
-<tr>
-    <td></td>
-    <td></td>
-    <td><strong><?= htmlspecialchars($invoice['due_date']) ?></strong></td>
-    <td><strong><?= htmlspecialchars($invoice['paid_date']) ?></strong></td>
-    <td><strong>$<?= number_format($ol_total, 2) ?></strong></td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<div class="section flex">
-    <div>
-        <img src="<?= pdf_asset_b64(__DIR__ . '/../assets/Everstone.png', 'image/png', 420, 80) ?>" width="120">
-        <p>
-            EVERSTONE TECHNOLOGY SYSTEMS INC. <br>
-            13455 94a Ave #104<br>
-            Surrey, BC V3V 1M9 Canada<br>
-            United States
-        </p>
+    <div class="info-panel">
+        <div class="info-card">
+            <h3>From</h3>
+            <strong>Everstone Technology Systems Inc.</strong>
+            <p>13455 94a Ave #104</p>
+            <p>Surrey, BC V3V 1M9 Canada</p>
+            <p>sales@everstonetech.ca</p>
+        </div>
+        <div class="info-card">
+            <h3>Bill To</h3>
+            <strong><?= htmlspecialchars($invoice['customer']) ?></strong>
+            <p><?= nl2br(htmlspecialchars($invoice['address'])) ?></p>
+            <p>Email: <?= htmlspecialchars($invoice['email']) ?></p>
+            <p>Phone: <?= htmlspecialchars($invoice['phone']) ?></p>
+        </div>
+        <div class="info-card">
+            <h3>Details</h3>
+            <p><strong>Status:</strong> <?= htmlspecialchars($invoice['status']) ?></p>
+            <p><strong>Due Date:</strong> <?= htmlspecialchars($invoice['due_date']) ?></p>
+            <p><strong>Paid Date:</strong> <?= htmlspecialchars($invoice['paid_date']) ?></p>
+        </div>
     </div>
-</div>
 
-<hr>
+    <table class="line-items">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Description</th>
+                <th class="text-right">Qty</th>
+                <th class="text-right">Unit Price</th>
+                <th class="text-right">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+        $i = 1;
+        while ($line = mysqli_fetch_assoc($order_lines)) {
+        ?>
+            <tr>
+                <td><?= $i++ ?></td>
+                <td><?= htmlspecialchars($line['product']) ?></td>
+                <td class="text-right"><?= $line['qty'] ?></td>
+                <td class="text-right">$<?= number_format($line['unit_price'], 2) ?></td>
+                <td class="text-right">$<?= number_format($line['qty'] * $line['unit_price'], 2) ?></td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
 
-<div class="section flex">
-    <h2>INTRODUCTION</h2>
-    <img src="<?= pdf_asset_b64(__DIR__ . '/../assets/Everstone.png', 'image/png', 420, 80) ?>" width="120">
-</div>
+    <div class="summary-row">
+        <div></div>
+        <div class="summary-box">
+            <div class="summary-line">
+                <span>Subtotal</span>
+                <span>$<?= number_format($ol_total, 2) ?></span>
+            </div>
+            <div class="summary-line total">
+                <span>Total Due</span>
+                <span>$<?= number_format($ol_total, 2) ?></span>
+            </div>
+        </div>
+    </div>
 
-<div class="section">
-    <h1 style="font-size:36px">
-        Everstone provides technology systems, procurement, and operational support across a broad range of industries.
-    </h1>
-    <p style="font-size:14px">
-        Everstone brings practical experience in delivering reliable technology, procurement, and logistical
-        support. The company aims to provide tailored solutions to enhance operational efficiency and adaptability
-        for its clients. The company is dedicated to quality and precision, meeting the needs of government and
-        corporate clients through innovative and reliable solutions.
-    </p>
+    <div class="footer-section">
+        <div class="footer-box">
+            <h4>Notes</h4>
+            <p>Thank you for your business. Please remit payment according to the terms outlined in this invoice.</p>
+        </div>
+        <div class="footer-box">
+            <h4>Payment Terms</h4>
+            <p>Payment is due within 30 days of the invoice date unless otherwise agreed. Late payments may incur additional fees.</p>
+        </div>
+    </div>
 </div>
 
 </body>

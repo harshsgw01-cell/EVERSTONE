@@ -93,9 +93,549 @@ ob_start();
 <html>
 <head>
 <meta charset="UTF-8">
-<style><?= tcs_unified_css_block('purchase-pdf') ?></style>
+<style>
+body {
+    margin: 0;
+    font-family: 'Calibri', 'Segoe UI', sans-serif;
+    color: #202839;
+    /* background: #eff2f7; */
+}
+
+.page-shell {
+    width: 100%;
+    max-width: 1080px;
+    margin: 20px auto;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #d6dbe8;
+    position: relative;
+}
+
+.doc-header {
+    padding: 28px 32px 24px;
+    background: linear-gradient(135deg, #0d4c92 0%, #112f55 100%);
+    color: #0d4c92;
+}
+
+.hdr-tbl {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.hdr-tbl td {
+    vertical-align: top;
+    padding: 0;
+}
+
+.logo-cell {
+    width: 28%;
+}
+
+.logo-cell img {
+    max-height: 80px;
+    display: block;
+}
+
+.co-info {
+    width: 42%;
+    padding-left: 22px;
+}
+
+.co-name {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 0.06em;
+    color: #0d4c92;
+}
+
+.co-sub {
+    font-size: 10px;
+    line-height: 1.85;
+    color: #0d4c92
+}
+
+.doc-type-cell {
+    width: 30%;
+    text-align: right;
+}
+
+.doc-type {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #0d4c92;
+}
+
+.doc-identity {
+    margin-bottom: 10px;
+}
+
+.doc-num-badge {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 30px;
+    background: #f9a826;
+    color: #102a43;
+    font-weight: 700;
+    font-size: 14px;
+    min-width: 180px;
+    box-shadow: inset 0 0 0 1px rgba(16, 42, 67, 0.12);
+}
+
+.doc-num-rev {
+    display: block;
+    margin-top: 8px;
+    font-size: 11px;
+    color: #0d4c92;
+}
+
+.doc-contact {
+    font-size: 10px;
+    color: #0d4c92;
+    line-height: 1.8;
+}
+
+.agree-note {
+    margin-top: 22px;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.24);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 14px;
+    color: #0d4c92;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.section-po-details,
+.section-address,
+.section-order-details,
+.section-line-items,
+.section-notes,
+.section-authorization,
+.section-about-terms {
+    padding: 26px 32px;
+}
+
+.sec-lbl {
+    font-size: 12px;
+    font-weight: 800;
+    color: #102a43;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 14px;
+}
+
+.po-details-band {
+    background: #f8fafc;
+    border: 1px solid #d7e1ed;
+    border-radius: 14px;
+    padding: 18px 20px;
+}
+
+.po-details-grid {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.po-detail-item {
+    width: 33%;
+    padding: 10px 8px;
+    vertical-align: top;
+}
+
+.po-detail-item.po-title-item {
+    padding-top: 18px;
+}
+
+.pd-label {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #5a7184;
+    margin-bottom: 6px;
+}
+
+.pd-value {
+    display: block;
+    font-size: 13px;
+    color: #102a43;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.address-grid {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.address-grid td {
+    vertical-align: top;
+    padding: 0 10px 0 0;
+}
+
+.address-card {
+    width: 33%;
+    padding-bottom: 0;
+}
+
+.ibox {
+    background: #f8fbff;
+    border: 1px solid #dbe7f1;
+    border-radius: 14px;
+    padding: 18px 18px 20px;
+    min-height: 126px;
+}
+
+.ibox h6 {
+    margin: 0 0 12px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #0c3c6d;
+}
+
+.address-content strong {
+    display: block;
+    font-size: 13px;
+    color: #102a43;
+    margin-bottom: 8px;
+}
+
+.sub,
+.address-content span {
+    display: block;
+    font-size: 10px;
+    color: #435468;
+    line-height: 1.75;
+}
+
+.contact-info {
+    margin-top: 4px;
+}
+
+.reference-info {
+    margin-top: 10px;
+    font-size: 10px;
+    color: #0c3c6d;
+}
+
+.not-specified {
+    font-size: 10px;
+    color: #8d9fb2;
+}
+
+.order-details-wrapper {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-details-card,
+.barcode-card {
+    padding: 0 10px 0 0;
+    vertical-align: top;
+}
+
+.order-details-card {
+    width: 66%;
+}
+
+.barcode-card {
+    width: 34%;
+}
+
+.detail-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.detail-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #d7e1ed;
+    font-size: 10px;
+    color: #435468;
+}
+
+.detail-table .detail-label {
+    width: 36%;
+    font-weight: 700;
+    color: #0f355d;
+}
+
+.detail-table .detail-value {
+    width: 64%;
+}
+
+.barcode-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.barcode-wrapper {
+    margin-top: 12px;
+    text-align: center;
+}
+
+.barcode-wrapper img {
+    width: 100%;
+    max-height: 88px;
+    object-fit: contain;
+}
+
+.barcode-lbl {
+    margin-top: 10px;
+    font-size: 10px;
+    color: #102a43;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.po-tbl {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10px;
+}
+
+.po-tbl th,
+.po-tbl td {
+    padding: 12px 10px;
+    border: 1px solid #d7e1ed;
+}
+
+.po-tbl th {
+    background: #0a4a83;
+    color: #0d4c92;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+}
+
+.po-tbl td {
+    background: #ffffff;
+    vertical-align: top;
+    color: #324156;
+}
+
+.po-tbl tr.ev td {
+    background: #f7faff;
+}
+
+.col-num,
+.col-unit,
+.col-qty,
+.col-price,
+.col-total {
+    text-align: right;
+}
+
+.cell-desc {
+    min-width: 240px;
+}
+
+.qty-bx {
+    display: inline-block;
+    padding: 6px 10px;
+    background: #f3f6fb;
+    border-radius: 8px;
+    color: #0f3561;
+    font-weight: 700;
+}
+
+.total-row td {
+    border-top: 2px solid #0a4a83;
+    font-weight: 700;
+    background: #f8fbff;
+}
+
+.total-label {
+    text-align: right;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: #102a43;
+}
+
+.total-value {
+    text-align: right;
+    font-size: 11px;
+    color: #102a43;
+}
+
+.notes-box {
+    background: #f7faff;
+    border: 1px solid #dbe7f1;
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.notes-header {
+    font-size: 11px;
+    font-weight: 700;
+    color: #102a43;
+    margin-bottom: 10px;
+}
+
+.notes-content {
+    font-size: 10px;
+    line-height: 1.7;
+    color: #415165;
+}
+
+.signatures-wrapper {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.signature-block {
+    width: 50%;
+    padding: 0 10px 0 0;
+    vertical-align: top;
+}
+
+.sig-card {
+    background: #f8fbff;
+    border: 1px solid #dbe7f1;
+    border-radius: 14px;
+    padding: 18px;
+    min-height: 170px;
+}
+
+.sig-card h6 {
+    margin: 0 0 12px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #0c3c6d;
+}
+
+.signature-area {
+    min-height: 88px;
+    border: 1px dashed #c4d1e0;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.sig-img {
+    max-width: 100%;
+    max-height: 84px;
+}
+
+.sig-placeholder {
+    width: 100%;
+    height: 70px;
+    background: #f4f7fb;
+    border-radius: 10px;
+}
+
+.sig-line,
+.vendor-line {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14px;
+    font-size: 10px;
+    color: #415165;
+}
+
+.sig-name {
+    font-weight: 700;
+    color: #0f3561;
+}
+
+.sig-role,
+.sig-ack-label,
+.sig-ack-date {
+    font-size: 10px;
+    color: #546d86;
+}
+
+.vendor-card {
+    min-height: 186px;
+}
+
+.ack-text {
+    font-size: 10px;
+    color: #435468;
+    line-height: 1.6;
+}
+
+.section-about-terms {
+    padding: 24px 32px 32px;
+}
+
+.about-header h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #102a43;
+}
+
+.about-content {
+    margin-top: 16px;
+}
+
+.intro-lead,
+.intro-body {
+    margin: 0 0 12px;
+    font-size: 10px;
+    color: #435468;
+    line-height: 1.75;
+}
+
+.terms-box {
+    background: #f8fbff;
+    border: 1px solid #dbe7f1;
+    border-radius: 14px;
+    padding: 18px;
+    margin-top: 18px;
+}
+
+.t-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #102a43;
+    margin-bottom: 10px;
+}
+
+.terms-list {
+    padding-left: 18px;
+    margin: 0;
+}
+
+.terms-list li {
+    margin-bottom: 10px;
+    font-size: 10px;
+    color: #415165;
+    line-height: 1.6;
+}
+
+.terms-list li strong {
+    color: #0f3561;
+}
+
+.watermark {
+    position: absolute;
+    bottom: 24px;
+    right: 26px;
+    opacity: 0.035;
+    width: 180px;
+    z-index: 1;
+}
+
+.doc-footer {
+    display: none;
+}
+</style>
 </head>
-<body class="purchase-pdf-page">
+<body class="purchase-pdf-root">
 
 <?php if ($logo_b64): ?>
 <img src="<?= $logo_b64 ?>" class="watermark" alt="">
@@ -165,18 +705,12 @@ ob_start();
                     </span>
                 </td>
                 <td class="po-detail-item">
-                    <span class="pd-label">Status</span>
-                    <span class="pd-value status-<?= strtolower(htmlspecialchars($po['status'])) ?>">
-                        <?= htmlspecialchars($po['status']) ?>
-                    </span>
-                </td>
-                <td class="po-detail-item">
                     <span class="pd-label">Currency</span>
                     <span class="pd-value"><?= htmlspecialchars($po['currency'] ?? 'USD') ?></span>
                 </td>
                 </tr>
                 <tr>
-                <td class="po-detail-item po-title-item" colspan="4">
+                <td class="po-detail-item po-title-item" colspan="3">
                     <span class="pd-label">PO Title</span>
                     <span class="pd-value"><?= htmlspecialchars($po['title']) ?></span>
                 </td>

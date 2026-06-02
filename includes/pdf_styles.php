@@ -2,6 +2,15 @@
 
 function tcs_unified_css_block(string $blockName): string
 {
+    // If a global purchase PDF CSS exists, return it so the 'purchase-pdf' block
+    // becomes the global styling for all PDFs that call this helper.
+    if ($blockName === 'purchase-pdf') {
+        $globalPath = __DIR__ . '/../assets/css/purchase-global.css';
+        if (is_file($globalPath)) {
+            $g = file_get_contents($globalPath);
+            if ($g !== false) return $g;
+        }
+    }
     $cssPath = __DIR__ . '/../assets/css/tcs-unified.css';
     if (!is_file($cssPath)) {
         return '';
